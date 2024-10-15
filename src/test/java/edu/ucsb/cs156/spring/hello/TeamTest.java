@@ -76,6 +76,19 @@ public class TeamTest {
     }
 
     @Test
+    public void testEquals_nameFalseMembersTrue() {
+        // Arrange
+        Team team1 = new Team("TeamName");
+        team1.addMember("Member1");
+
+        Team team2 = new Team("DifferentName"); // Different name from team1
+        team2.addMember("Member1"); // Same members as team1
+
+        // Act & Assert
+        assertFalse(team1.equals(team2)); // Name differs, so equals should return false even if members are the same
+    }
+
+    @Test
     public void testHashCode_equalObjects() {
         // Arrange
         Team t1 = new Team();
